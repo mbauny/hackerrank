@@ -1,5 +1,5 @@
 // https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list
-package linked_lists
+package linkedlists
 
 // Complete the insertNodeAtPosition function below.
 
