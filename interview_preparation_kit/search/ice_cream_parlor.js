@@ -2,20 +2,17 @@
 
 // Complete the whatFlavors function below.
 function whatFlavors(cost, money) {
-	const flavorIndexes = {};
-	cost.forEach(function(id, index) {
-		flavorIndexes[id] = index;
-	});
-
-	const size = cost.length;
-	for (let priceIndex = 0; priceIndex < size; priceIndex += 1) {
-		const complement = money - cost[priceIndex];
-		if (flavorIndexes[complement]) {
-			const complementIndex = flavorIndexes[complement];
-			const min = Math.min(priceIndex, complementIndex);
-			const max = Math.max(priceIndex, complementIndex);
+	const flavorIndexByPrice = {};
+	for (let idx = 0; idx < cost.length; idx += 1) {
+		const price = cost[idx];
+		const complement = money - price;
+		const complementIndex = flavorIndexByPrice[complement];
+		if (complementIndex != undefined) {
+			const min = Math.min(idx, complementIndex);
+			const max = Math.max(idx, complementIndex);
 			console.log(min + 1, max + 1);
-			return;
+		} else {
+			flavorIndexByPrice[price] = idx;
 		}
 	}
 }
